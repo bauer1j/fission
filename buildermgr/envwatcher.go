@@ -459,7 +459,7 @@ func (envw *environmentWatcher) createBuilderDeployment(env *crd.Environment) (*
 								},
 							},
 							Command: []string{"/builder", sharedMountPath},
-							Env:     fission.K8sEnvVars(env.Spec.Builder.Env),
+							Env:     env.Spec.Builder.Env,
 						},
 						{
 							Name:                   "fetcher",
@@ -473,7 +473,7 @@ func (envw *environmentWatcher) createBuilderDeployment(env *crd.Environment) (*
 								},
 							},
 							Command: []string{"/fetcher", sharedMountPath},
-							Env:     fission.K8sEnvVars(env.Spec.Builder.Env),
+							Env:     env.Spec.Builder.Env,
 						},
 					},
 					ServiceAccountName: "fission-builder",
